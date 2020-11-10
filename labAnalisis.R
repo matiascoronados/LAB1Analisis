@@ -26,8 +26,6 @@ colnames(data) <- c("id",
                     "class")
 
 
-
-
 bool.values <- data$bare.nuclei=='?'
 data <- data[!bool.values,]
 
@@ -48,7 +46,7 @@ data[["bare.nuclei"]] <- factor(data[["bare.nuclei"]])
 
 #Se pasa a numerico los valores de bare nuclei.
 data$bare.nuclei <- as.numeric(data$bare.nuclei)
-
+data$class <- as.numeric(data$class)
 
 #Se elimina la columna ID
 #dd$id <- NULL
@@ -76,13 +74,107 @@ boxplot.width =  ggboxplot(data = data, x = "class", y = "width", color = "class
 
 #Grafico de cajas para clump.thickness
 
-boxplot.width =  ggboxplot(data = dd, x = "class", y = "clump.thickness", color = "class") + border()
+boxplot.clump.thickness =  ggboxplot(data = dd, x = "class", y = "clump.thickness", color = "class") + border()
+ydens = axis_canvas(boxplot.clump.thickness, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.clump.thickness = insert_yaxis_grob(boxplot.clump.thickness, ydens, grid::unit(.2, "null"), position = "right")
 
-ydens = axis_canvas(boxplot.width, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+ggdraw(boxplot.clump.thickness)
 
-boxplot.width = insert_yaxis_grob(boxplot.width, ydens, grid::unit(.2, "null"), position = "right")
 
-ggdraw(boxplot.width)
+#Grafico de cajas para unif.cell.size
+
+boxplot.unif.cell.size =  ggboxplot(data = dd, x = "class", y = "unif.cell.size", color = "class") + border()
+ydens = axis_canvas(boxplot.unif.cell.size, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.unif.cell.size = insert_yaxis_grob(boxplot.unif.cell.size, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.unif.cell.size)
+
+
+#Grafico de cajas para unif.cell.shape
+
+boxplot.unif.cell.shape =  ggboxplot(data = dd, x = "class", y = "unif.cell.shape", color = "class") + border()
+ydens = axis_canvas(boxplot.unif.cell.shape, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.unif.cell.shape = insert_yaxis_grob(boxplot.unif.cell.shape, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.unif.cell.shape)
+
+
+#Grafico de cajas para marginal.adhesion
+
+boxplot.marginal.adhesion =  ggboxplot(data = dd, x = "class", y = "marginal.adhesion", color = "class") + border()
+ydens = axis_canvas(boxplot.marginal.adhesion, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.marginal.adhesion = insert_yaxis_grob(boxplot.marginal.adhesion, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.marginal.adhesion)
+
+#Grafico de cajas para epith.cell.size
+
+boxplot.epith.cell.size =  ggboxplot(data = dd, x = "class", y = "epith.cell.size", color = "class") + border()
+ydens = axis_canvas(boxplot.epith.cell.size, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.epith.cell.size = insert_yaxis_grob(boxplot.epith.cell.size, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.epith.cell.size)
+
+
+#Grafico de cajas para bare.nuclei
+
+boxplot.bare.nuclei =  ggboxplot(data = dd, x = "class", y = "bare.nuclei", color = "class") + border()
+ydens = axis_canvas(boxplot.bare.nuclei, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.bare.nuclei = insert_yaxis_grob(boxplot.bare.nuclei, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.bare.nuclei)
+
+
+#Grafico de cajas para bland.chromatin
+
+boxplot.bland.chromatin =  ggboxplot(data = dd, x = "class", y = "bland.chromatin", color = "class") + border()
+ydens = axis_canvas(boxplot.bland.chromatin, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.bland.chromatin = insert_yaxis_grob(boxplot.bland.chromatin, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.bland.chromatin)
+
+
+#Grafico de cajas para normal.nucleoli
+
+boxplot.normal.nucleoli =  ggboxplot(data = dd, x = "class", y = "normal.nucleoli", color = "class") + border()
+ydens = axis_canvas(boxplot.normal.nucleoli, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.normal.nucleoli = insert_yaxis_grob(boxplot.normal.nucleoli, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.normal.nucleoli)
+
+#Grafico de cajas para mitoses
+
+boxplot.mitoses =  ggboxplot(data = dd, x = "class", y = "mitoses", color = "class") + border()
+ydens = axis_canvas(boxplot.mitoses, axis = "y", coord_flip = TRUE) + geom_density(data = dd, aes(x = clump.thickness, fill = class), alpha = 0.7, size = 0.2) + coord_flip()
+boxplot.mitoses = insert_yaxis_grob(boxplot.mitoses, ydens, grid::unit(.2, "null"), position = "right")
+
+ggdraw(boxplot.mitoses)
+
+
+data.aux <- data
+
+data$class <- replace(data$class,data$class==2,0)
+data$class <- replace(data$class,data$class==4,1)
+
+data$class <- factor(data$class)
+
+
+
+total <- glm(class ~ ., family = binomial(link = "logit"), data = data)
+
+
+nulo <- glm(
+   class ~ 1,
+   family = binomial(link = "logit"),
+   data = data
+)
+
+modelo <- step(nulo, scope = list(lower = nulo, upper = total),
+               direction = "forward", test = "LRT", trace = 1)
+
+
+
+cor(data$marginal.adhesion,data$epith.cell.size)
 
 
 
