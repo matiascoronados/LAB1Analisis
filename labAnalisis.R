@@ -17,11 +17,11 @@ colnames(data) <- c("id",
                     "clump.thickness",
                     "unif.cell.size",
                     "unif.cell.shape",
-                    "marginal.adhesion",
+                    "marg.adhesion",
                     "epith.cell.size",
                     "bare.nuclei",
-                    "bland.chromatin",
-                    "normal.nucleoli",
+                    "bland.chroma",
+                    "norm.nucleoli",
                     "mitoses",
                     "class")
 
@@ -70,7 +70,6 @@ library(ggpubr)
 library(cowplot)
 
 boxplot.width =  ggboxplot(data = data, x = "class", y = "width", color = "class") + border()
-
 
 #Grafico de cajas para clump.thickness
 
@@ -173,8 +172,42 @@ modelo <- step(nulo, scope = list(lower = nulo, upper = total),
                direction = "forward", test = "LRT", trace = 1)
 
 
+#Para analizar 
 
-cor(data$marginal.adhesion,data$epith.cell.size)
+#El modelo creado con step, entrego el singuiente RLM
+
+#class ~ unif.cell.size + clump.thickness + bland.chroma + 
+#marg.adhesion + unif.cell.shape + norm.nucleoli + bare.nuclei + 
+#  mitoses
+
+#Este es similar al modelo completo, con la diferencia de que este ultimo contempla la variable epith.cell.size
+
+#Para este tipo de modelo, es importante reconocer si las variables guaran una correlacion entre ellas.
+
+#Debido al conocimiento previo que se tiene del tema, se sabe que la variable single epith cell size guarnda una 
+#estrecha relacion con marginal adhesion.
+#Ademas de lo anterior, se sabe que existe una relacion entre la forma, y tamaño de la celula.
+
+#Por loa p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
