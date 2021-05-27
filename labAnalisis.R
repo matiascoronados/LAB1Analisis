@@ -12,10 +12,10 @@ url_datos <- 'https://archive.ics.uci.edu/ml/machine-learning-databases/breast-c
 
 datos.duros <- read.csv(url_datos)
 data <- data.frame(datos.duros)
-
+sdas
 colnames(data) <- c("id",
                     "clump.thickness",
-                    "unif.cell.size",
+                    "unif.cell.size",ddd
                     "unif.cell.shape",
                     "marg.adhesion",
                     "epith.cell.size",
